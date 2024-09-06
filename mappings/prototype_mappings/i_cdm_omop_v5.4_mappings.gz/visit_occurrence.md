@@ -25,25 +25,25 @@ PART 1 - Generate visits by:
 ---Then by PERSON_ID take VISIT_START_DATE as VISIT_START_DATE, MAX (VISIT_END_DATE) as VISIT_END_DATE, and ‘OP’ as PLACE_OF_SERVICE_SOURCE_VALUE.
 
 
-![](md_files/image12.png)
+![](md_files/image3.png)
 
 | Destination Field | Source field | Logic | Comment field |
 | --- | --- | --- | --- |
-| visit_occurrence_id |  |  | Autogenerate |
+| visit_occurrence_id |  |  |  |
 | person_id | patient | Map by mapping person.person_source_value to patient.  Find person.person_id by mapping encouters.patient to person.person_source_value. |  |
-| visit_concept_id | encounterclass | case   when lower(encouterclass) = 'ambulatory' then 9202  when lower(encouterclass) = 'emergency' then 9203  when lower(encouterclass) = 'inpatient'     then 9201  when lower(encouterclass) = 'wellness'     then 9202  when lower(encouterclass) = 'urgentcare'  then 9203   when lower(encouterclass) = 'outpatient'   then 9202  else 0  end |  |
+| visit_concept_id |  |  |  |
 | visit_start_date | start |  |  |
-| visit_start_datetime | start |  |  |
+| visit_start_datetime |  |  |  |
 | visit_end_date | stop |  |  |
-| visit_end_datetime | stop |  |  |
-| visit_type_concept_id |  |  | 44818517 |
-| provider_id |  |  | NULL |
-| care_site_id |  |  | NULL |
-| visit_source_value | encounterclass |  |  |
-| visit_source_concept_id |  |  | 0 |
-| admitting_source_concept_id |  |  | 0 |
-| admitting_source_value |  |  | NULL |
-| discharge_to_concept_id |  |  | 0 |
-| discharge_to_source_value |  |  | NULL |
-| preceding_visit_occurrence_id |  |  | For a given person, find the previous visit:    lag(visit_occurrence_id)       over(partition by person_id order by visit_start_date) |
+| visit_end_datetime |  |  |  |
+| visit_type_concept_id |  |  |  |
+| provider_id |  |  |  |
+| care_site_id |  |  |  |
+| visit_source_value |  |  |  |
+| visit_source_concept_id |  |  |  |
+| admitted_from_concept_id |  |  |  |
+| admitted_from_source_value |  |  |  |
+| discharged_to_concept_id |  |  |  |
+| discharged_to_source_value |  |  |  |
+| preceding_visit_occurrence_id |  |  |  |
 
