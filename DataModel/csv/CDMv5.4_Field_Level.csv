@@ -402,141 +402,6 @@ cdm_source,cdm_release_date,Yes,date,The date the ETL script was completed. Typi
 cdm_source,cdm_version,No,varchar(10),Version of the OMOP CDM used as string. e.g. v5.4,,No,No,,,,,
 cdm_source,cdm_version_concept_id,Yes,integer,The Concept Id representing the version of the CDM.,You can find all concepts that represent the CDM versions using the query: `SELECT * FROM CONCEPT WHERE   VOCABULARY_ID = 'CDM' AND CONCEPT_CLASS = 'CDM'`,No,Yes,CONCEPT,CONCEPT_ID,,,
 cdm_source,vocabulary_version,Yes,varchar(20),Version of the OMOP standardised vocabularies loaded,You can find the version of your Vocabulary using the query: `SELECT vocabulary_version from vocabulary  where vocabulary_id = 'None'`,No,No,,,,,
-concept,concept_id,Yes,integer,A unique identifier for each Concept across all domains.,,Yes,No,,,,,
-concept,concept_name,Yes,varchar(255),"An unambiguous, meaningful and descriptive name for the Concept.",,No,No,,,,,
-concept,domain_id,Yes,varchar(20),A foreign key to the [DOMAIN](https://ohdsi.github.io/CommonDataModel/cdm531.html#domain) table the Concept belongs to.,,No,Yes,DOMAIN,DOMAIN_ID,,,
-concept,vocabulary_id,Yes,varchar(20),"A foreign key to the [VOCABULARY](https://ohdsi.github.io/CommonDataModel/cdm531.html#vocabulary)
-table indicating from which source the
-Concept has been adapted.",,No,Yes,VOCABULARY,VOCABULARY_ID,,,
-concept,concept_class_id,Yes,varchar(20),"The attribute or concept class of the
-Concept. Examples are 'Clinical Drug',
-'Ingredient', 'Clinical Finding' etc.",,No,Yes,CONCEPT_CLASS,CONCEPT_CLASS_ID,,,
-concept,standard_concept,No,varchar(1),"This flag determines where a Concept is
-a Standard Concept, i.e. is used in the
-data, a Classification Concept, or a
-non-standard Source Concept. The
-allowable values are 'S' (Standard
-Concept) and 'C' (Classification
-Concept), otherwise the content is NULL.",,No,No,,,,,
-concept,concept_code,Yes,varchar(50),"The concept code represents the identifier
-of the Concept in the source vocabulary,
-such as SNOMED-CT concept IDs,
-RxNorm RXCUIs etc. Note that concept
-codes are not unique across vocabularies.",,No,No,,,,,
-concept,valid_start_date,Yes,date,"The date when the Concept was first
-recorded. The default value is
-1-Jan-1970, meaning, the Concept has no
-(known) date of inception.",,No,No,,,,,
-concept,valid_end_date,Yes,date,"The date when the Concept became
-invalid because it was deleted or
-superseded (updated) by a new concept.
-The default value is 31-Dec-2099,
-meaning, the Concept is valid until it
-becomes deprecated.",,No,No,,,,,
-concept,invalid_reason,No,varchar(1),"Reason the Concept was invalidated.
-Possible values are D (deleted), U
-(replaced with an update) or NULL when
-valid_end_date has the default value.",,No,No,,,,,
-vocabulary,vocabulary_id,Yes,varchar(20),"A unique identifier for each Vocabulary, such
-as ICD9CM, SNOMED, Visit.",,Yes,No,,,,,
-vocabulary,vocabulary_name,Yes,varchar(255),"The name describing the vocabulary, for
-example, International Classification of
-Diseases, Ninth Revision, Clinical
-Modification, Volume 1 and 2 (NCHS) etc.",,No,No,,,,,
-vocabulary,vocabulary_reference,No,varchar(255),"External reference to documentation or
-available download of the about the
-vocabulary.",,No,No,,,,,
-vocabulary,vocabulary_version,No,varchar(255),"Version of the Vocabulary as indicated in
-the source.",,No,No,,,,,
-vocabulary,vocabulary_concept_id,Yes,integer,A Concept that represents the Vocabulary the VOCABULARY record belongs to.,,No,Yes,CONCEPT,CONCEPT_ID,,,
-domain,domain_id,Yes,varchar(20),A unique key for each domain.,,Yes,No,,,,,
-domain,domain_name,Yes,varchar(255),"The name describing the Domain, e.g.
-Condition, Procedure, Measurement
-etc.",,No,No,,,,,
-domain,domain_concept_id,Yes,integer,A Concept representing the Domain Concept the DOMAIN record belongs to.,,No,Yes,CONCEPT,CONCEPT_ID,,,
-concept_class,concept_class_id,Yes,varchar(20),A unique key for each class.,,Yes,No,,,,,
-concept_class,concept_class_name,Yes,varchar(255),"The name describing the Concept Class, e.g.
-Clinical Finding, Ingredient, etc.",,No,No,,,,,
-concept_class,concept_class_concept_id,Yes,integer,A Concept that represents the Concept Class.,,No,Yes,CONCEPT,CONCEPT_ID,,,
-concept_relationship,concept_id_1,Yes,integer,,,No,Yes,CONCEPT,CONCEPT_ID,,,
-concept_relationship,concept_id_2,Yes,integer,,,No,Yes,CONCEPT,CONCEPT_ID,,,
-concept_relationship,relationship_id,Yes,varchar(20),The relationship between CONCEPT_ID_1 and CONCEPT_ID_2. Please see the [Vocabulary Conventions](https://ohdsi.github.io/CommonDataModel/dataModelConventions.html#concept_relationships). for more information.,,No,Yes,RELATIONSHIP,RELATIONSHIP_ID,,,
-concept_relationship,valid_start_date,Yes,date,The date when the relationship is first recorded.,,No,No,,,,,
-concept_relationship,valid_end_date,Yes,date,The date when the relationship is invalidated.,,No,No,,,,,
-concept_relationship,invalid_reason,No,varchar(1),"Reason the relationship was invalidated. Possible values are 'D' (deleted), 'U' (updated) or NULL.",,No,No,,,,,
-relationship,relationship_id,Yes,varchar(20),"The type of relationship captured by the
-relationship record.",,Yes,No,,,,,
-relationship,relationship_name,Yes,varchar(255),,,No,No,,,,,
-relationship,is_hierarchical,Yes,varchar(1),"Defines whether a relationship defines
-concepts into classes or hierarchies. Values
-are 1 for hierarchical relationship or 0 if not.",,No,No,,,,,
-relationship,defines_ancestry,Yes,varchar(1),"Defines whether a hierarchical relationship
-contributes to the concept_ancestor table.
-These are subsets of the hierarchical
-relationships. Valid values are 1 or 0.",,No,No,,,,,
-relationship,reverse_relationship_id,Yes,varchar(20),"The identifier for the relationship used to
-define the reverse relationship between two
-concepts.",,No,No,,,,,
-relationship,relationship_concept_id,Yes,integer,"A foreign key that refers to an identifier in
-the [CONCEPT](https://ohdsi.github.io/CommonDataModel/cdm531.html#concept) table for the unique
-relationship concept.",,No,Yes,CONCEPT,CONCEPT_ID,,,
-concept_synonym,concept_id,Yes,integer,,,No,Yes,CONCEPT,CONCEPT_ID,,,
-concept_synonym,concept_synonym_name,Yes,varchar(1000),,,No,No,,,,,
-concept_synonym,language_concept_id,Yes,integer,,,No,Yes,CONCEPT,CONCEPT_ID,,,
-concept_ancestor,ancestor_concept_id,Yes,integer,"The Concept Id for the higher-level concept
-that forms the ancestor in the relationship.",,No,Yes,CONCEPT,CONCEPT_ID,,,
-concept_ancestor,descendant_concept_id,Yes,integer,"The Concept Id for the lower-level concept
-that forms the descendant in the
-relationship.",,No,Yes,CONCEPT,CONCEPT_ID,,,
-concept_ancestor,min_levels_of_separation,Yes,integer,"The minimum separation in number of
-levels of hierarchy between ancestor and
-descendant concepts. This is an attribute
-that is used to simplify hierarchic analysis.",,No,No,,,,,
-concept_ancestor,max_levels_of_separation,Yes,integer,"The maximum separation in number of
-levels of hierarchy between ancestor and
-descendant concepts. This is an attribute
-that is used to simplify hierarchic analysis.",,No,No,,,,,
-source_to_concept_map,source_code,Yes,varchar(50),"The source code being translated
-into a Standard Concept.",,No,No,,,,,
-source_to_concept_map,source_concept_id,Yes,integer,"A foreign key to the Source
-Concept that is being translated
-into a Standard Concept.","This is either 0 or should be a number above 2 billion, which are the Concepts reserved for site-specific codes and mappings.",No,Yes,CONCEPT,CONCEPT_ID,,,
-source_to_concept_map,source_vocabulary_id,Yes,varchar(20),"A foreign key to the
-VOCABULARY table defining the
-vocabulary of the source code that
-is being translated to a Standard
-Concept.",,No,No,,,,,
-source_to_concept_map,source_code_description,No,varchar(255),"An optional description for the
-source code. This is included as a
-convenience to compare the
-description of the source code to
-the name of the concept.",,No,No,,,,,
-source_to_concept_map,target_concept_id,Yes,integer,"The target Concept
-to which the source code is being
-mapped.",,No,Yes,CONCEPT,CONCEPT_ID,,,
-source_to_concept_map,target_vocabulary_id,Yes,varchar(20),The Vocabulary of the target Concept.,,No,Yes,VOCABULARY,VOCABULARY_ID,,,
-source_to_concept_map,valid_start_date,Yes,date,"The date when the mapping
-instance was first recorded.",,No,No,,,,,
-source_to_concept_map,valid_end_date,Yes,date,"The date when the mapping
-instance became invalid because it
-was deleted or superseded
-(updated) by a new relationship.
-Default value is 31-Dec-2099.",,No,No,,,,,
-source_to_concept_map,invalid_reason,No,varchar(1),"Reason the mapping instance was invalidated. Possible values are D (deleted), U (replaced with an update) or NULL when valid_end_date has the default value.",,No,No,,,,,
-drug_strength,drug_concept_id,Yes,integer,The Concept representing the Branded Drug or Clinical Drug Product.,,No,Yes,CONCEPT,CONCEPT_ID,,,
-drug_strength,ingredient_concept_id,Yes,integer,The Concept representing the active ingredient contained within the drug product.,"Combination Drugs will have more than one record in this table, one for each active Ingredient.",No,Yes,CONCEPT,CONCEPT_ID,,,
-drug_strength,amount_value,No,float,The numeric value or the amount of active ingredient contained within the drug product.,,No,No,,,,,
-drug_strength,amount_unit_concept_id,No,integer,The Concept representing the Unit of measure for the amount of active ingredient contained within the drug product.,,No,Yes,CONCEPT,CONCEPT_ID,,,
-drug_strength,numerator_value,No,float,The concentration of the active ingredient contained within the drug product.,,No,No,,,,,
-drug_strength,numerator_unit_concept_id,No,integer,The Concept representing the Unit of measure for the concentration of active ingredient.,,No,Yes,CONCEPT,CONCEPT_ID,,,
-drug_strength,denominator_value,No,float,"The amount of total liquid (or other divisible product, such as ointment, gel, spray, etc.).",,No,No,,,,,
-drug_strength,denominator_unit_concept_id,No,integer,The Concept representing the denominator unit for the concentration of active ingredient.,,No,Yes,CONCEPT,CONCEPT_ID,,,
-drug_strength,box_size,No,integer,The number of units of Clinical Branded Drug or Quantified Clinical or Branded Drug contained in a box as dispensed to the patient.,,No,No,,,,,
-drug_strength,valid_start_date,Yes,date,"The date when the Concept was first
-recorded. The default value is
-1-Jan-1970.",,No,No,,,,,
-drug_strength,valid_end_date,Yes,date,The date when then Concept became invalid.,,No,No,,,,,
-drug_strength,invalid_reason,No,varchar(1),"Reason the concept was invalidated. Possible values are D (deleted), U (replaced with an update) or NULL when valid_end_date has the default value.",,No,No,,,,,
 cohort,cohort_definition_id,Yes,integer,,,No,No,,,,,
 cohort,subject_id,Yes,integer,,,No,No,,,,,
 cohort,cohort_start_date,Yes,date,,,No,No,,,,,
@@ -560,16 +425,17 @@ methylation,position,No,integer,This field represents the position of the CpG si
 methylation,protocol_id,No,varchar,This field represents the unique identifier for each methylation record.,,No,No,,,,,
 methylation,person_id,Yes,Integer,The PERSON_ID of the Person for whom the methylation Observation is recorded.,,Yes,No,PERSON,PERSON_ID,,,
 methylation,unmethylated_intensity,No,float,This field represents the intensity value for unmethylated CpG sites,,No,No,,,,,
-imaging,image_id,Yes,varchar(50),This field represents the unique identifier for each image.,Ensure each image is uniquely identified by this field.,Yes,No,,,,,
-imaging,person_id,Yes,varchar(50),This field represents the unique identifier for the patient associated with the image.,Ensure that patient IDs map correctly to patients in the system.,Yes,Yes,PERSON,PERSON_ID,,,
-imaging,study_id,No,varchar(50),This field represents the unique identifier for the imaging study.,Ensure the study identifier is accurate and correctly maps to relevant study information.,No,No,,,,,
-imaging,modality,No,varchar(50),"This field represents the imaging modality used (e.g., MRI, CT, X-ray).","Ensure modality is filled as per the available imaging modalities like MRI, CT, X-ray.",No,No,,,,,
-imaging,body_part_examined,No,varchar(50),This field represents the body part examined in the imaging study.,Ensure correct body part notation for the body part examined in the study.,No,No,,,,,
-imaging,date_of_image,No,date,This field represents the date when the imaging study was performed.,Ensure date of image is recorded accurately as per the study.,No,No,,,,,
-imaging,file_location,No,varchar(50),This field represents the location of the image file in the storage system.,Ensure file paths are accurate and accessible for retrieval of DICOM files.,No,No,,,,,
-imaging,feature_id,No,varchar(50),This field represents the unique identifier for the image feature.,Ensure each feature is uniquely identified.,No,No,,,,,
-imaging,feature_type,No,varchar(50),"This field represents the type of extracted feature (e.g., shape, texture, intensity).",Ensure feature types are mapped correctly to the available feature types.,No,No,,,,,
-imaging,feature_value,No,float,This field represents the value of the extracted feature.,Ensure feature value is correctly recorded with proper decimal precision.,No,No,,,,,
-imaging,unit_concept_id,No,integer,The Concept Id representing the unit of measurement for the feature value,Ensure the unit of measurement is filled correctly.,No,No,,,,,
-imaging,extraction_method,No,varchar(50),This field represents the method or algorithm used to extract the feature.,Ensure extraction method is recorded accurately.,No,No,,,,,
-imaging,date_of_extraction,No,date,This field represents the date when the feature was extracted from the image.,Ensure date of feature extraction is recorded accurately.,No,No,,,,,
+image_occurrence,image_id,Yes,varchar(50),This field represents the unique identifier for each image.,Ensure each image is uniquely identified by this field.,Yes,No,,,,,
+image_occurrence,person_id,Yes,varchar(50),This field represents the unique identifier for the patient associated with the image.,Ensure that patient IDs map correctly to patients in the system.,Yes,Yes,PERSON,PERSON_ID,,,
+image_occurrence,study_id,No,varchar(50),This field represents the unique identifier for the imaging study.,Ensure the study identifier is accurate and correctly maps to relevant study information.,No,No,,,,,
+image_occurrence,modality,No,varchar(50),"This field represents the imaging modality used (e.g., MRI, CT, X-ray).","Ensure modality is filled as per the available imaging modalities like MRI, CT, X-ray.",No,No,,,,,
+image_occurrence,body_part_examined,No,varchar(50),This field represents the body part examined in the imaging study.,Ensure correct body part notation for the body part examined in the study.,No,No,,,,,
+image_occurrence,date_of_image,No,date,This field represents the date when the imaging study was performed.,Ensure date of image is recorded accurately as per the study.,No,No,,,,,
+image_occurrence,file_location,No,varchar(50),This field represents the location of the image file in the storage system.,Ensure file paths are accurate and accessible for retrieval of DICOM files.,No,No,,,,,
+image_feature,feature_id,Yes,varchar(50),This field represents the unique identifier for the image feature.,Ensure each feature is uniquely identified.,Yes,No,,,,,
+image_feature,image_id,Yes,varchar(50),This field represents the unique identifier for each image.,Ensure each image is uniquely identified by this field.,Yes,No,,,,,
+image_feature,feature_type,No,varchar(50),"This field represents the type of extracted feature (e.g., shape, texture, intensity).",Ensure feature types are mapped correctly to the available feature types.,No,No,,,,,
+image_feature,feature_value,No,float,This field represents the value of the extracted feature.,Ensure feature value is correctly recorded with proper decimal precision.,No,No,,,,,
+image_feature,unit_concept_id,No,integer,The Concept Id representing the unit of measurement for the feature value,Ensure the unit of measurement is filled correctly.,No,No,,,,,
+image_feature,extraction_method,No,varchar(50),This field represents the method or algorithm used to extract the feature.,Ensure extraction method is recorded accurately.,No,No,,,,,
+image_feature,date_of_extraction,No,date,This field represents the date when the feature was extracted from the image.,Ensure date of feature extraction is recorded accurately.,No,No,,,,,
