@@ -2,7 +2,7 @@
 
 ### Reading from diagnosis.csv
 
-![](md_files/image4.png)
+![](md_files/image3.png)
 
 | Destination Field | Source field | Logic | Comment field |
 | --- | --- | --- | --- |

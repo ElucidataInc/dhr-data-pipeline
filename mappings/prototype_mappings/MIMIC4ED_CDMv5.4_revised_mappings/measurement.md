@@ -2,7 +2,7 @@
 
 ### Reading from triage.csv
 
-![](md_files/image7.png)
+![](md_files/image6.png)
 
 | Destination Field | Source field | Logic | Comment field |
 | --- | --- | --- | --- |
@@ -32,7 +32,7 @@
 
 ### Reading from vitalsign.csv
 
-![](md_files/image8.png)
+![](md_files/image7.png)
 
 | Destination Field | Source field | Logic | Comment field |
 | --- | --- | --- | --- |

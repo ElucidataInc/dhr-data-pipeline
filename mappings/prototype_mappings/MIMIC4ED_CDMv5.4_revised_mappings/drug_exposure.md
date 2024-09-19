@@ -2,7 +2,7 @@
 
 ### Reading from medrecon.csv
 
-![](md_files/image5.png)
+![](md_files/image4.png)
 
 | Destination Field | Source field | Logic | Comment field |
 | --- | --- | --- | --- |
@@ -32,7 +32,7 @@
 
 ### Reading from pyxis.csv
 
-![](md_files/image6.png)
+![](md_files/image5.png)
 
 | Destination Field | Source field | Logic | Comment field |
 | --- | --- | --- | --- |
