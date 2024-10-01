@@ -8,7 +8,7 @@
 | --- | --- | --- | --- |
 | measurement_id |  |  |  |
 | person_id | subject_id |  |  |
-| measurement_concept_id | temperature<br>heartrate<br>resprate<br>o2sat<br>sbp<br>dbp<br>pain |  |  |
+| measurement_concept_id | temperature<br>heartrate<br>resprate<br>o2sat<br>sbp<br>dbp<br>pain | measurement_concept_id = 4302666    Name = Body temperature  Vocab = SNOMED<br>measurement_concept_id = 4239408    Name = Heart rate  Vocab = SNOMED<br>measurement_concept_id = 4313591    Name = Respiratory rate  Vocab = SNOMED<br>measurement_concept_id = 40483579    Name = Arterial oxygen saturation  Vocab = SNOMED<br>measurement_concept_id = 4152194    Name = Systolic blood pressure  Vocab = SNOMED<br>measurement_concept_id = 4154790    Name = Diastolic blood pressure  Vocab = SNOMED<br>measurement_concept_id = 4022240    Name = Pain score  Vocab = SNOMED |  |
 | measurement_date |  |  |  |
 | measurement_datetime |  |  |  |
 | measurement_time |  |  |  |
@@ -38,7 +38,7 @@
 | --- | --- | --- | --- |
 | measurement_id |  |  |  |
 | person_id | subject_id |  |  |
-| measurement_concept_id | temperature<br>heartrate<br>resprate<br>o2sat<br>sbp<br>dbp<br>pain<br>rhythm |  |  |
+| measurement_concept_id | temperature<br>heartrate<br>resprate<br>o2sat<br>sbp<br>dbp<br>pain<br>rhythm | measurement_concept_id = 4302666    Name = Body temperature  Vocab = SNOMED<br>measurement_concept_id = 4239408    Name = Heart rate  Vocab = SNOMED<br>measurement_concept_id = 4313591    Name = Respiratory rate  Vocab = SNOMED<br>measurement_concept_id = 40483579    Name = Arterial oxygen saturation  Vocab = SNOMED<br>measurement_concept_id = 4152194    Name = Systolic blood pressure  Vocab = SNOMED<br>measurement_concept_id = 4154790    Name = Diastolic blood pressure  Vocab = SNOMED<br>measurement_concept_id = 4022240    Name = Pain score  Vocab = SNOMED<br>measurement_concept_id = 4239411    Name = Pulse rhythm  Vocab = SNOMED |  |
 | measurement_date | charttime |  |  |
 | measurement_datetime | charttime |  |  |
 | measurement_time |  |  |  |

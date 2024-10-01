@@ -8,7 +8,7 @@
 | --- | --- | --- | --- |
 | drug_exposure_id |  |  |  |
 | person_id | subject_id |  |  |
-| drug_concept_id | ndc |  |  |
+| drug_concept_id | name |  |  |
 | drug_exposure_start_date | charttime |  |  |
 | drug_exposure_start_datetime | charttime |  |  |
 | drug_exposure_end_date |  |  |  |
