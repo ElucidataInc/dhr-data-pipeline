@@ -65,3 +65,27 @@
 | service_location_id | INT | 848383005 | This will be the care_site_source_value/care_site_id (based on logic) linked to the visit occurence table or the person table through the primary keys of visit_occurence_id and person_id respectively. |
 | service_location_name | VARCHAR | Smile Hospital | This will be care_site_name mapping to the care_site_id linked to the visit occurence table or the person table through the primary keys of visit_occurence_id and person_id respectively. |
 
+### Table: result_observation.csv
+
+| Field | Type | Most freq. value | Comment |
+| --- | --- | --- | --- |
+| patient_id | VARCHAR | SMH3467 |  |
+| encounter_id | INT | 105 |  |
+| observation_code | VARCHAR | 10466-1 |  |
+| observation_description | VARCHAR | Anion gap 3 in Serum or Plasma |  |
+| result_code_set | VARCHAR | LOINC | This is the code set which is used in column Observation Code. It can be used to map the measurement_source_concept_id to the measurement_concept_id if part of OMOP vocabulary. |
+| result_date_time | VARCHAR | 2020-04-12 | 	 |
+| result_value | INT | 4 |  |
+| result_flag | VARCHAR | N | result_flag is the standard observation interpretation code of the result field. It is not providing intutive conversion to a concept, the result_flag_description is a more suitable field for the same. |
+| result_flag_description | VARCHAR | Normal |  |
+| normal_range_low | INT | 3 |  |
+| normal_range_high | INT | 10 |  |
+| result_unit | VARCHAR | mEq/L |  |
+| order_id | INT | 2576 |  |
+| result_order_description | VARCHAR | Basic metabolic panel | Text description of the result order will be present in the target for the orders table. |
+| service_provider_npi | INT | 5555555555 |  |
+| service_provider_first_name | VARCHAR | James | This has to be deidentified. Pass as NULL. |
+| service_provider_last_name | VARCHAR | Smith | This has to be deidentified. Pass as NULL. |
+| service_location_id | INT | 848383005 | This will be the care_site_source_value/care_site_id (based on logic) linked to the visit occurence table or the person table through the primary keys of visit_occurence_id and person_id respectively. |
+| service_location_name | VARCHAR | Smile Hospital | This will be care_site_name mapping to the care_site_id linked to the visit occurence table or the person table through the primary keys of visit_occurence_id and person_id respectively. |
+
